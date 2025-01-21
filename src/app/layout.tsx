@@ -2,6 +2,8 @@
 
 import { Box, Container } from "@chakra-ui/react";
 import { Provider as ChakraProvider } from "@/ui/provider";
+import "./global.css"
+
 
 export default function RootLayout({
   children,

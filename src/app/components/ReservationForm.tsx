@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Flex, Input } from "@chakra-ui/react";
+import { Button, Flex, Input, Box, Text } from "@chakra-ui/react";
 
 export function ReservationForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -22,7 +22,11 @@ export function ReservationForm() {
   };
 
   const handleReservation = async () => {
-    if (!phoneNumber) return;
+    if (!phoneNumber.startsWith("010")) {
+      window.alert("올바른 전화번호 형식이 아닙니다.");
+      setPhoneNumber("");
+      return;
+    }
 
     try {
       setIsSubmitting(true);
@@ -50,31 +54,55 @@ export function ReservationForm() {
   };
 
   return (
-    <Flex direction={["column", "row"]} justifyContent="center" alignItems="center" mb={12}>
-      <Input
-        value={phoneNumber}
-        onChange={handleInputChange}
-        placeholder="010-1234-5678"
-        borderRadius="xl"
-        width={["90%", "40%"]}
-        size="2xl"
-        mb={["4", "0"]}
-        borderColor="gray.300"
-        _hover={{ borderColor: "gray.400" }}
-        _focus={{ borderColor: "green.400", boxShadow: "0 0 0 1px green.400" }}
-      />
-      <Button
-        onClick={handleReservation}
-        borderRadius="xl"
-        size="2xl"
-        width={["90%", "auto"]}
-        bg="#39b01e"
-        color="white"
-        _hover={{ bg: "#09760d" }}
-        ml={["0", "4"]}
+    <Flex
+      direction={["row", "row"]} // 반응형 정렬
+      justifyContent="center"
+      alignItems="center"
+      mb={12}
+      gap={4} // 버튼과 입력창 간격
+    >
+      <Box
+        flex="1" // 입력 창이 더 넓어지도록 설정
+        maxW="400px" // 최대 너비 제한
       >
-        {isSubmitting ? "예약 중..." : "사전 예약하기"}
-      </Button>
+        <Input
+          value={phoneNumber}
+          onChange={handleInputChange}
+          placeholder="010-1234-5678"
+          borderRadius="lg"
+          height="50px"
+          width="100%"
+          fontSize="large"
+          border="none"
+          bg="gray.200" /* 내부 배경 색상 */
+          color="gray.600" /* 입력 텍스트 색상 */
+          borderColor="gray.300"
+          _hover={{ borderColor: "gray.400" }}
+          _focus={{
+            borderColor: "green.400",
+            boxShadow: "0 0 0 1px green.400",
+          }}
+          _placeholder={{
+            color: "gray.400" /* placeholder 색상 */,
+          }}
+        />
+      </Box>
+      <Box>
+        <Button
+          onClick={handleReservation}
+          borderRadius="lg"
+          height="50px"
+          maxWidth="110px"
+          bg="#0ECF82"
+          color="white"
+          fontSize="large"
+          px={8}
+          _hover={{ bg: "#0BA368" }}
+          _active={{ bg: "#0BA368" }}
+        >
+          사전 예약
+        </Button>
+      </Box>
     </Flex>
   );
 }
