@@ -7,7 +7,7 @@ import { VideoSection } from "./components/VideoSection";
 
 export default function Home() {
   return (
-    <Box m={0} p={0} backgroundColor="white" width="100vw" height="100vh">
+    <Box m={0} p={0} backgroundColor="white" width="100%" height="100vh">
       <Container centerContent maxWidth="100%" paddingX={0} paddingY={0}>
         <HeaderSection />
         <ReservationForm />
