@@ -17,12 +17,17 @@ export function ReservationForm() {
         11
       )}`;
     }
-
     setPhoneNumber(formattedInput);
   };
 
   const handleReservation = async () => {
+    // 중복 요청 방지
+    if (isSubmitting) {
+      return;
+    }
+
     if (!phoneNumber.startsWith("010")) {
+      console.log(JSON.stringify({ phoneNumber }))
       window.alert("올바른 전화번호 형식이 아닙니다.");
       setPhoneNumber("");
       return;
@@ -30,12 +35,12 @@ export function ReservationForm() {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch("/api/reservation", {
+      const response = await fetch("주소", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          // "Content-Type": "application/json",
         },
-        body: JSON.stringify({ phoneNumber }),
+        // body: phoneNumber
       });
 
       if (response.ok) {
@@ -55,14 +60,13 @@ export function ReservationForm() {
 
   return (
     <Flex
-      direction={["row", "row"]} // 반응형 정렬
+      direction={["row", null, "row"]} // 반응형 정렬
       justifyContent="center"
       alignItems="center"
-      mb={12}
-      gap={4} // 버튼과 입력창 간격
+      mb="48px"
+      gap="10px"
     >
       <Box
-        flex="1" // 입력 창이 더 넓어지도록 설정
         maxW="400px" // 최대 너비 제한
       >
         <Input
@@ -70,20 +74,18 @@ export function ReservationForm() {
           onChange={handleInputChange}
           placeholder="010-1234-5678"
           borderRadius="lg"
-          height="50px"
-          width="100%"
-          fontSize="large"
+          width={["264px", null, "400px"]}
+          height={["40px", null, "48px"]}
+          fontSize="16px"
           border="none"
-          bg="gray.200" /* 내부 배경 색상 */
-          color="gray.600" /* 입력 텍스트 색상 */
-          borderColor="gray.300"
-          _hover={{ borderColor: "gray.400" }}
+          bg="#E9EAED"
+          color="#gray.400"
+          _hover={{ outline: "1px solid #0ECF82" }}
           _focus={{
-            borderColor: "green.400",
-            boxShadow: "0 0 0 1px green.400",
+            outline: "1px solid #0ECF82",
           }}
           _placeholder={{
-            color: "gray.400" /* placeholder 색상 */,
+            color: "gray.400",
           }}
         />
       </Box>
@@ -91,8 +93,8 @@ export function ReservationForm() {
         <Button
           onClick={handleReservation}
           borderRadius="lg"
-          height="50px"
-          maxWidth="110px"
+          width={["84px", null, "92px"]}
+          height={["40px", null, "48px"]}
           bg="#0ECF82"
           color="white"
           fontSize="large"
