@@ -1,5 +1,5 @@
 {
-  "name": "kdev3_flowsync_fe",
+  "name": "smoke-test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
