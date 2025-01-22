@@ -27,7 +27,7 @@ export function ReservationForm() {
     }
 
     if (!phoneNumber.startsWith("010")) {
-      console.log(JSON.stringify({ phoneNumber }))
+      console.log(JSON.stringify({ phoneNumber }));
       window.alert("올바른 전화번호 형식이 아닙니다.");
       setPhoneNumber("");
       return;
@@ -35,12 +35,13 @@ export function ReservationForm() {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch("주소", {
+      // 아이티치는 2번
+      const response = await fetch("/api/reserve/", {
         method: "POST",
         headers: {
-          // "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
-        // body: phoneNumber
+        body: JSON.stringify({ phone_number: phoneNumber, key: "2" }),
       });
 
       if (response.ok) {

@@ -15,15 +15,18 @@ export default function Home() {
       fetch("/api/count-visitor/?key=2", { method: "GET" })
         .then((response) => {
           if (response.ok) {
-            console.log("성공적으로 카운트됨");
-            localStorage.setItem(userVisited, "true");
+            return response.json();
           } else {
-            console.error("카운트 안됨");
+            throw new Error("응답 없음.");
           }
         })
-        .catch((error) => console.error("카우트 중 에러발생 : ", error));
+        .then((data) => {
+          console.log(data.message);
+          localStorage.setItem(userVisited, "true");
+        })
+        .catch((error) => console.error(error));
     } else {
-      console.log("이미 카운트된 방문자")
+      console.log("이미 카운트된 방문자");
     }
   }, []);
 
