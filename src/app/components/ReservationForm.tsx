@@ -97,7 +97,7 @@ export function ReservationForm() {
           height={["40px", null, "48px"]}
           bg="#0ECF82"
           color="white"
-          fontSize="large"
+          fontSize="16px"
           px={8}
           _hover={{ bg: "#0BA368" }}
           _active={{ bg: "#0BA368" }}
