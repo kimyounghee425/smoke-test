@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Flex, Input, Box, Text } from "@chakra-ui/react";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export function ReservationForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +38,7 @@ export function ReservationForm() {
     try {
       setIsSubmitting(true);
       // 아이티치는 2번
-      const response = await fetch("/api/reserve/", {
+      const response = await fetch(`${BASE_URL}/api/reserve/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

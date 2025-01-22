@@ -6,13 +6,15 @@ import { ReservationForm } from "./components/ReservationForm";
 import { VideoSection } from "./components/VideoSection";
 import { useEffect } from "react";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export default function Home() {
   useEffect(() => {
     const userVisited = "visited";
 
     if (!localStorage.getItem(userVisited)) {
       // 아이티치 = 2번
-      fetch("/api/count-visitor/?key=2", { method: "GET" })
+      fetch(`${BASE_URL}/api/count-visitor/`, { method: "GET" })
         .then((response) => {
           if (response.ok) {
             return response.json();
