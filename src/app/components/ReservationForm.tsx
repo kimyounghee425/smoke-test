@@ -100,7 +100,7 @@ export function ReservationForm() {
           fontSize="16px"
           px={8}
           _hover={{ bg: "#0BA368" }}
-          _active={{ bg: "#0BA368" }}
+          _active={{ bg: "#0AA064" }}
         >
           사전 예약
         </Button>
