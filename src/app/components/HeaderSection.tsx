@@ -24,7 +24,7 @@ export function HeaderSection() {
           <Box
             width="100vw"
             height={["2px", null, "3px"]}
-            bg="#deebfd"
+            bg="#0ECF82"
             mb={["13px", null, "40px"]}
             mt={"-8px"}
           />

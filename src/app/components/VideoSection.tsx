@@ -14,9 +14,16 @@ export function VideoSection() {
         maxWidth="900px" // 최대 크기 제한
         minWidth="350px"
         p={0}
+        mb="200px"
       >
-        <video controls style={{ width: "100%", height: "100%" ,objectFit: "cover" }}>
-          <source src="/244754_tiny.mp4" type="video/mp4" />
+        <video
+          controls
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          muted
+          autoPlay
+          playsInline
+        >
+          <source src="/IMG_8596 2 (1).mov" type="video/mp4" />
           동영상이 지원되지 않습니다.
         </video>
       </Box>
