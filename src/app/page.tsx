@@ -14,7 +14,7 @@ export default function Home() {
 
     if (!localStorage.getItem(userVisited)) {
       // 아이티치 = 2번
-      fetch(`${BASE_URL}/api/count-visitor/`, { method: "GET" })
+      fetch(`${BASE_URL}/api/count-visitor/?key=1`, { method: "GET" })
         .then((response) => {
           if (response.ok) {
             return response.json();
