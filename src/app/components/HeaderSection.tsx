@@ -40,7 +40,7 @@ export function HeaderSection() {
             mb="16px"
             mx="auto"
           >
-            <Text
+            <Box
               fontSize={["16px", null, "20px"]}
               fontWeight="600"
               color="white"
@@ -48,18 +48,18 @@ export function HeaderSection() {
               lineHeight={["24px", null, "28px"]}
             >
               {/* 모바일 화면 */}
-              <Box display={["block", null, "none"]}>
+              <Text display={["block", null, "none"]}>
                 [선착순 50명] <br /> 사전 예약하고 무료로 먼저 사용해보세요!
-              </Box>
+              </Text>
               {/* 데스크탑 화면 */}
-              <Box display={["none", "none", "block"]}>
+              <Text display={["none", "none", "block"]}>
                 [선착순 50명] 사전 예약하고 무료로 먼저 사용해보세요!
-              </Box>
-            </Text>
+              </Text>
+            </Box>
           </Box>
 
           {/* 굵은 글씨 소개 */}
-          <Text
+          <Box
             fontSize={["28px", null, "40px"]}
             width={["250px", null, "547px"]}
             fontWeight="700"
@@ -68,44 +68,44 @@ export function HeaderSection() {
             // mb="8px"
           >
             {/* 모바일 화면 */}
-            <Box display={["block", "block", "none"]}>
+            <Text display={["block", "block", "none"]}>
               자기주도학습이 어려운
               <br />
               자녀를 위한 부담 없는
               <br />
               익명 온라인 스터디
-            </Box>
+            </Text>
 
             {/* 데스크탑 화면 */}
-            <Box display={["none", "none", "block"]}>
+            <Text display={["none", "none", "block"]}>
               자기주도학습이 어려운 자녀를 위한
               <br />
               부담 없는 익명 온라인 스터디
-            </Box>
-          </Text>
+            </Text>
+          </Box>
 
           {/* 세부 설명 */}
-          <Text
+          <Box
             fontSize={["16px", null, "16px"]}
             width={["295px", null, "660px"]}
             lineHeight="24px"
             color="#656565"
           >
             {/* 모바일 화면 */}
-            <Box display={["block", "block", "none"]}>
+            <Text display={["block", "block", "none"]}>
               AI가 같은 꿈을 가진 친구들로 그룹을 구성하고, 자녀가 직접 친구들을
               가르치며 스스로 학습할 수 있습니다. 수업 주제는 자녀가 정하며,
               성공적으로 마칠 경우 보상으로 용돈을 받을 수 있습니다.
-            </Box>
+            </Text>
             {/* 데스크탑 화면 */}
-            <Box display={["none", "block", "block"]}>
+            <Text display={["none", "block", "block"]}>
               AI가 같은 꿈을 가진 친구들로 그룹을 구성하고, 자녀가 직접 친구들을
               가르치며 스스로 학습할 수 있습니다.
               <br />
               수업 주제는 자녀가 정하며, 성공적으로 마칠 경우 보상으로 용돈을
               받을 수 있습니다.
-            </Box>
-          </Text>
+            </Text>
+          </Box>
         </VStack>
       </VStack>
     </Container>

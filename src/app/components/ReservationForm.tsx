@@ -38,7 +38,7 @@ export function ReservationForm() {
     try {
       setIsSubmitting(true);
       // 아이티치는 2번
-      const response = await fetch(`${BASE_URL}/api/reserve/`, {
+      const response = await fetch(`${BASE_URL}/log-phone-number/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,16 +46,18 @@ export function ReservationForm() {
         body: JSON.stringify({ phone_number: phoneNumber, key: "2" }),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.message === "saved phone number") {
         window.alert(
           "사전 예약이 완료되었습니다! 자세한 내용은 출시 후에 전달드리겠습니다!"
         );
         setPhoneNumber("");
-      } else {
-        window.alert("처리 중 문제가 발생했습니다. 다시 시도해주세요.");
+      } else if (data.message === "already existing phone number") {
+        window.alert("이미 등록된 전화번호입니다.");
       }
     } catch (error) {
-      window.alert("처리 중 문제가 발생했습니다. 다시 시도해주세요.");
+      window.alert(`처리 중 문제가 발생했습니다. 다시 시도해 주세요.\n에러내용 : ${error}`);
     } finally {
       setIsSubmitting(false);
     }
