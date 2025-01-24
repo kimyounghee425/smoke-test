@@ -43,7 +43,7 @@ export function ReservationForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ phone_number: phoneNumber, key: "2" }),
+        body: JSON.stringify({ phone_number: phoneNumber, idea_key: "2" }),
       });
 
       const data = await response.json();
