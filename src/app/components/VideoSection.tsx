@@ -23,7 +23,7 @@ export function VideoSection() {
           autoPlay
           playsInline
         >
-          <source src="/IMG_8596 2 (1).mov" type="video/mp4" />
+          <source src="/prototype2_onlinestudy.mp4" type="video/mp4" />
           동영상이 지원되지 않습니다.
         </video>
       </Box>
