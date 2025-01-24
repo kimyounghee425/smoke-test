@@ -17,7 +17,7 @@ export default function Home() {
       if (!localStorage.getItem(userVisited)) {
         try {
           // 아이티치 = 2번
-          const response = await fetch(`${BASE_URL}/api/log-phone-number/`, {
+          const response = await fetch(`${BASE_URL}/api/log-visit/`, {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

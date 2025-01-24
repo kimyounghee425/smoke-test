@@ -38,7 +38,7 @@ export function ReservationForm() {
     try {
       setIsSubmitting(true);
       // 아이티치는 2번
-      const response = await fetch(`${BASE_URL}/log-phone-number/`, {
+      const response = await fetch(`${BASE_URL}/api/log-phone-number/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
