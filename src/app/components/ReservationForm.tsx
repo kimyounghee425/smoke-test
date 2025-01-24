@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 export function ReservationForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  console.log("BASE_URL: ", BASE_URL);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value.replace(/[^0-9]/g, "");
     let formattedInput = input;
@@ -21,9 +21,10 @@ export function ReservationForm() {
     }
     setPhoneNumber(formattedInput);
   };
-
+  
   const handleReservation = async () => {
     // 중복 요청 방지
+  
     if (isSubmitting) {
       return;
     }
@@ -37,13 +38,16 @@ export function ReservationForm() {
 
     try {
       setIsSubmitting(true);
+
+      const removeHyphenPhoneNumber = phoneNumber.replace(/-/g, "");
+      console.log(removeHyphenPhoneNumber)
       // 아이티치는 2번
       const response = await fetch(`${BASE_URL}/api/log-phone-number/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ phone_number: phoneNumber, idea_key: "2" }),
+        body: JSON.stringify({ phone_number: removeHyphenPhoneNumber, idea_key: "2" }),
       });
 
       const data = await response.json();
@@ -57,7 +61,9 @@ export function ReservationForm() {
         window.alert("이미 등록된 전화번호입니다.");
       }
     } catch (error) {
-      window.alert(`처리 중 문제가 발생했습니다. 다시 시도해 주세요.\n에러내용 : ${error}`);
+      window.alert(
+        `처리 중 문제가 발생했습니다. 다시 시도해 주세요.\n에러내용 : ${error}`
+      );
     } finally {
       setIsSubmitting(false);
     }
